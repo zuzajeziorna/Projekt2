@@ -71,7 +71,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox">
+      <widget class="QComboBox" name="Txtpartia">
        <item>
         <property name="text">
          <string>nogi (przednia część uda + pośladki)</string>
@@ -127,7 +127,7 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="Txtcwiczenie"/>
      </item>
      <item row="6" column="0">
       <widget class="QLabel" name="label_3">
@@ -137,7 +137,7 @@
       </widget>
      </item>
      <item row="6" column="1">
-      <widget class="QSpinBox" name="spinBox_2"/>
+      <widget class="QSpinBox" name="Txtseria"/>
      </item>
      <item row="8" column="0">
       <widget class="QLabel" name="label_4">
@@ -147,7 +147,7 @@
       </widget>
      </item>
      <item row="8" column="1">
-      <widget class="QSpinBox" name="spinBox_3"/>
+      <widget class="QSpinBox" name="Txtpowtorzenia"/>
      </item>
      <item row="10" column="0">
       <widget class="QLabel" name="label_5">
@@ -157,7 +157,7 @@
       </widget>
      </item>
      <item row="10" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="Txttechnika"/>
      </item>
     </layout>
    </widget>

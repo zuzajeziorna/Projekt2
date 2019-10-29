@@ -29,27 +29,53 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>20</x>
      <y>190</y>
-     <width>91</width>
+     <width>171</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>Ułóż trening</string>
+    <string>Ułóż trening dla początkującego</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>190</y>
+     <x>300</x>
+     <y>260</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Zamknij</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>190</y>
+     <width>181</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ułóż trening dla zaawansowanego</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="AddWorkout">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>250</y>
+     <width>101</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Dodaj ćwiczenie</string>
    </property>
   </widget>
   <widget class="QWidget" name="">

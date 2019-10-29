@@ -2,6 +2,7 @@
 #define DIALOG1_H
 
 #include <QDialog>
+#include <QMainWindow>
 
 namespace Ui {
 class Dialog1;
@@ -15,8 +16,12 @@ public:
     explicit Dialog1(QWidget *parent = nullptr);
     ~Dialog1();
 
+private slots:
+    void on_AddWorkout_clicked();
+
 private:
     Ui::Dialog1 *ui;
+    QMainWindow *mainwindow;
 };
 
 #endif // DIALOG1_H

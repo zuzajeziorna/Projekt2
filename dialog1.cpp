@@ -12,3 +12,10 @@ Dialog1::~Dialog1()
 {
     delete ui;
 }
+
+void Dialog1::on_AddWorkout_clicked()
+{
+    hide();
+    mainwindow = new QMainWindow(this);
+    mainwindow->show();
+}
