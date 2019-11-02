@@ -30,5 +30,26 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
+    QSqlDatabase db;
+        db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName("C:/Users/matiz/Desktop/Roboczy Qt/Plan_lekcji/Baza_planu_zajec.db");
 
+        QString PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA;
+        PARTIA=ui->txt_partia->text();
+        CWICZENIE=ui->txt_cwiczenie->text();
+        SERIE=ui->txt_serie->text();
+        POWTORZENIA=ui->txt_powtorzenia->text();
+        TECHNIKA=ui->txt_technika->text();
+
+        db.open();
+        QSqlQuery qry;
+        qry.prepare("insert into Dane_osobowe (ID,Imie,Nazwisko) values ('"+ID+"','"+Imie+"','"+Nazwisko+"')");
+
+        if(qry.exec())
+        {
+            QMessageBox::information(this,tr("Zapisz"),tr("Zapisano"));
+            db.close();
+        }
+        else
+            QMessageBox::critical(this,tr("Błąd!!!"),qry.lastError().text());
 }
