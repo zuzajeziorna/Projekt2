@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "dialog1.h"
+#include <QMessageBox>
+#include <QComboBox>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -32,10 +34,10 @@ void MainWindow::on_pushButton_clicked()
 {
     QSqlDatabase db;
         db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("C:/Users/matiz/Desktop/Roboczy Qt/Plan_lekcji/Baza_planu_zajec.db");
+        db.setDatabaseName("bazadanych.db");
 
         QString PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA;
-        PARTIA=ui->txt_partia->text();
+     //   PARTIA=ui->txt_partia->text();
         CWICZENIE=ui->txt_cwiczenie->text();
         SERIE=ui->txt_serie->text();
         POWTORZENIA=ui->txt_powtorzenia->text();
@@ -43,7 +45,7 @@ void MainWindow::on_pushButton_clicked()
 
         db.open();
         QSqlQuery qry;
-        qry.prepare("insert into Dane_osobowe (ID,Imie,Nazwisko) values ('"+ID+"','"+Imie+"','"+Nazwisko+"')");
+        qry.prepare("insert into bazadanych (PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA) values ('"+PARTIA+"','"+CWICZENIE+"','"+SERIE+"','"+POWTORZENIA+"','"+TECHNIKA+"')");
 
         if(qry.exec())
         {
@@ -51,5 +53,5 @@ void MainWindow::on_pushButton_clicked()
             db.close();
         }
         else
-            QMessageBox::critical(this,tr("Błąd!!!"),qry.lastError().text());
+            QMessageBox::critical(this,tr("Błąd!!!"),tr("Błąd"));
 }
