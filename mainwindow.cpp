@@ -2,19 +2,26 @@
 #include "ui_mainwindow.h"
 #include "dialog1.h"
 #include <QMessageBox>
-#include <QComboBox>
+#include <QtSql>
+#include <QSqlError>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("bazadanych.db");
 
-    if(!db.open())
-        ui->connectdb->setText("Nie udało się połączyć z bazą danych");
-    else
-        ui->connectdb->setText("Połączono z bazą danych");
+    QSqlDatabase db;
+        db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName("C:/Users/Zuza/Documents/Projekt2/bazadanych.db");
+
+        if(!db.open())
+        {
+           ui->connectdb->setText("Nie udalo sie otworzyc bazy danych.");
+          }
+        else
+        {
+            ui->connectdb->setText("Połączono z bazą");
+          }
 }
 
 MainWindow::~MainWindow()
@@ -32,26 +39,42 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QSqlDatabase db;
-        db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("bazadanych.db");
+    qDebug()<<"Start";
 
         QString PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA;
-     //   PARTIA=ui->txt_partia->text();
+       // PARTIA=ui->txt_partia->text();
         CWICZENIE=ui->txt_cwiczenie->text();
         SERIE=ui->txt_serie->text();
         POWTORZENIA=ui->txt_powtorzenia->text();
         TECHNIKA=ui->txt_technika->text();
 
-        db.open();
-        QSqlQuery qry;
-        qry.prepare("insert into bazadanych (PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA) values ('"+PARTIA+"','"+CWICZENIE+"','"+SERIE+"','"+POWTORZENIA+"','"+TECHNIKA+"')");
 
-        if(qry.exec())
-        {
-            QMessageBox::information(this,tr("Zapisz"),tr("Zapisano"));
+
+         db.open();
+         if(!db.open())
+             qDebug()<<"Problem z otwarciem bazy";
+         else
+             qDebug()<<"Połączono z bazą";
+
+         QSqlQuery qry;
+         qry.prepare("insert into zawodnicy (PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA) values ('"+PARTIA+"','"+CWICZENIE+"','"+SERIE+"','"+POWTORZENIA+"','"+TECHNIKA+"')");
+
+         if(qry.exec())
+         {
+             QMessageBox::information(this,tr("Zapis"),tr("Zapisano"));
+             db.close();
+             db.removeDatabase(QSqlDatabase::defaultConnection);
+
+         }
+         else
+         {
+            QMessageBox::critical(this,tr("Błąd"), qry.lastError().text());
             db.close();
-        }
-        else
-            QMessageBox::critical(this,tr("Błąd!!!"),tr("Błąd"));
+            db.removeDatabase(QSqlDatabase::defaultConnection);
+         }
+
+         if(!db.open())
+             qDebug()<<"Baza została zamknięta";
+         else
+             qDebug()<<"Nie zamknięto bazy";
 }
