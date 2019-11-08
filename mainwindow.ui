@@ -74,7 +74,7 @@
       <widget class="QComboBox" name="txt_partia">
        <item>
         <property name="text">
-         <string>plecy</string>
+         <string>nogi</string>
         </property>
        </item>
        <item>
@@ -89,27 +89,12 @@
        </item>
        <item>
         <property name="text">
-         <string>nogi</string>
+         <string>plecy</string>
         </property>
        </item>
        <item>
         <property name="text">
          <string>barki</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>triceps</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>biceps</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>łydki</string>
         </property>
        </item>
       </widget>

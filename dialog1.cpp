@@ -21,6 +21,7 @@ Dialog1::Dialog1(QWidget *parent) :
         {
             ui->connectdb->setText("Połączono z bazą");
           }
+
 }
 
 Dialog1::~Dialog1()
@@ -31,18 +32,43 @@ Dialog1::~Dialog1()
 void Dialog1::on_AddWorkout_clicked()
 {
     hide();
-    mainwindow = new QMainWindow(this);
-    mainwindow->show();
+    //mainwindow = new QMainWindow(this);
+//    mainwindow->show();
+   ((QMainWindow *) this->parent())->show();
+}
+
+QString makeQueryText(QComboBox* combo){
+    QString czesc=combo->currentText();
+    QString queryText="SELECT * FROM exercise WHERE PARTIA LIKE '"+czesc+"' ORDER BY RANDOM() LIMIT 2;";
+    return queryText;
 }
 
 void Dialog1::on_pushButton_clicked()
 {
     qDebug()<<"Start";
-
          QSqlQueryModel* modal = new QSqlQueryModel();
          QSqlQuery *qry = new QSqlQuery(db);
-         qry->prepare("Select * FROM exercise");
+         //int idx=ui->comboBox1->currentIndex();
+         QString czesc=ui->comboBox1->currentText();
+         QString queryText="SELECT * FROM exercise WHERE PARTIA LIKE '"+czesc+"' ORDER BY RANDOM() LIMIT 2;";
+         qDebug()<<queryText;
+         qry->prepare(queryText);
+        // qry->prepare(makeQueryText(ui->comboBox2));
          qry->exec();
          modal->setQuery(*qry);
-         ui->TabelaX->setModel(modal);
+         ui->Tabela->setModel(modal);
+
+
+}
+
+void Dialog1::on_pushButton_2_clicked()
+{
+    //qDebug()<<"Start";
+
+     //    QSqlQueryModel* modal = new QSqlQueryModel();
+       //  QSqlQuery *qry = new QSqlQuery(db2);
+         //qry->prepare("SELECT * FROM exercise WHERE PARTIA LIKE 'nogi' ORDER BY RANDOM() LIMIT 2;");
+        // qry->exec();
+         //modal->setQuery(*qry);
+         //ui->Tabela->setModel(modal);
 }
