@@ -23,6 +23,19 @@ MainWindow::MainWindow(QWidget *parent)
         {
   //          ui->connectdb->setText("Połączono z bazą danych");
           }
+        QSqlDatabase db2;
+            db2 = QSqlDatabase::addDatabase("QSQLITE");
+            db2.setDatabaseName("C:/Users/Zuza/Documents/Projekt2/bazadanych1.db");
+
+            if(!db2.open())
+            {
+    //           ui->connectdb->setText("Nie udalo sie otworzyc bazy danych.");
+        qDebug()<<"Blad bazy";
+            }
+            else
+            {
+      //          ui->connectdb->setText("Połączono z bazą danych");
+              }
 }
 
 MainWindow::~MainWindow()
@@ -42,14 +55,14 @@ void MainWindow::on_pushButton_clicked()
 {
     qDebug()<<"Start";
 
-        QString PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA;
+        QString PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA,TEMPO,OBCIAZENIE;
         PARTIA=ui->txt_partia->currentText();
         CWICZENIE=ui->txt_cwiczenie->text();
         SERIE=ui->txt_serie->text();
         POWTORZENIA=ui->txt_powtorzenia->text();
         TECHNIKA=ui->txt_technika->text();
-
-
+        TEMPO=ui->txt_tempo->text();
+        OBCIAZENIE=ui->txt_obciazenie->text();
 
          //db.open();
          //if(!db.open())
@@ -59,7 +72,7 @@ void MainWindow::on_pushButton_clicked()
 
          QSqlQuery qry;
 
-         qry.prepare("insert into exercise (PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA) values ('"+PARTIA+"','"+CWICZENIE+"','"+SERIE+"','"+POWTORZENIA+"','"+TECHNIKA+"')");
+         qry.prepare("insert into exercise (PARTIA,CWICZENIE,SERIE,POWTORZENIA,TECHNIKA,TEMPO,OBCIAZENIE) values ('"+PARTIA+"','"+CWICZENIE+"','"+SERIE+"','"+POWTORZENIA+"','"+TECHNIKA+"','"+TEMPO+"','"+OBCIAZENIE+"')");
 
 
          if(qry.exec())

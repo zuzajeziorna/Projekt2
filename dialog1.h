@@ -17,8 +17,10 @@ class Dialog1 : public QDialog
 
 public:
     QSqlDatabase db;
+    QSqlDatabase db2;
     explicit Dialog1(QWidget *parent = nullptr);
     ~Dialog1();
+
 
 private slots:
     void on_AddWorkout_clicked();

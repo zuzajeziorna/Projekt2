@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 
 public:
     QSqlDatabase db;
+    QSqlDatabase db2;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
