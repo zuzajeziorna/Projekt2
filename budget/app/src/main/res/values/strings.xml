@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">budget2</string>
+    <string-array name="kategorie">
+        <item>Ubrania</item>
+        <item>Jedzenie</item>
+        <item>Picie</item>
+        <item>Zdrowie</item>
+    </string-array>
+
+    <string-array name="okres_czasu">
+        <item>dziś</item>
+        <item>tygodnia</item>
+        <item>miesiąca</item>
+    </string-array>
+</resources>

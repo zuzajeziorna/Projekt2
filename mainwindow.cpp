@@ -23,19 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
         {
   //          ui->connectdb->setText("Połączono z bazą danych");
           }
-        QSqlDatabase db2;
-            db2 = QSqlDatabase::addDatabase("QSQLITE");
-            db2.setDatabaseName("C:/Users/Zuza/Documents/Projekt2/bazadanych1.db");
 
-            if(!db2.open())
-            {
-    //           ui->connectdb->setText("Nie udalo sie otworzyc bazy danych.");
-        qDebug()<<"Blad bazy";
-            }
-            else
-            {
-      //          ui->connectdb->setText("Połączono z bazą danych");
-              }
 }
 
 MainWindow::~MainWindow()
@@ -80,7 +68,7 @@ void MainWindow::on_pushButton_clicked()
              QMessageBox::information(this,tr("Zapis"),tr("Zapisano"));
              qDebug()<<qry.executedQuery();
              db.close();
-            // db.removeDatabase(QSqlDatabase::defaultConnection);
+
 
          }
          else
