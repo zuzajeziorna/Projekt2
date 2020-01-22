@@ -32,16 +32,16 @@ public class DBManager {
 
     public void insert(String kategoria, Integer kwota) {
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DatabaseHelper.KATEGORIA, kategoria);
-        contentValue.put(DatabaseHelper.KWOTA, kwota);
-        database.insert(DatabaseHelper.TABLE_NAME, null, contentValue);
+        contentValue.put(DatabaseHelper.KATEGORIA , kategoria);
+        contentValue.put(DatabaseHelper.KWOTA , kwota);
+        database.insert(DatabaseHelper.TABLE_NAME , null, contentValue);
     }
 
     public Cursor fetch(String wybranyCzas) {
-        String[] columns = new String[] { DatabaseHelper.KATEGORIA, "SUM(" + DatabaseHelper.KWOTA + ")" };
+        String[] columns = new String[] { DatabaseHelper.DATA , DatabaseHelper.KATEGORIA , DatabaseHelper.KWOTA };
         String selection = DatabaseHelper.DATA + ">= date(" + wybranyCzas + ")";
-        String groupBy = DatabaseHelper.KATEGORIA;
-        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, selection, null, groupBy, null, null);
+        String orderBy = DatabaseHelper.DATA + " DESC";
+        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, selection, null, null, null, orderBy);
         if (cursor != null) {
             cursor.moveToFirst();
         }
